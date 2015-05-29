@@ -21,7 +21,10 @@ class NewsletterServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+        $this->app->bind(
+            'Socieboy\Newsletter\NotifierServiceProvider',
+            'Socieboy\Newsletter\SubscriberServiceProvider'
+        );
 	}
 
 }
