@@ -34,7 +34,7 @@ MAILCHIMP_APIKEY = 00000000000
 
 # Usage
 
-% Subscribe an email to lists.
+Subscribe an email to lists.
 
 On your controller or whatever place where you need to subscribe an email to a list on mailchimp.
 Subscribe to mailchimp "test" list defined on the config file.
@@ -58,3 +58,25 @@ class HomeController extends Controller {
 }
 
 ```
+
+Fire campaings to lists
+```
+<?php namespace App\Http\Controllers;
+
+use Socieboy\Newsletter\Notifications\Notifier;
+use App\Http\Requests\Request;
+
+class HomeController extends Controller {
+
+	public function store(Request $request, Notifier $notifier)
+	{
+		$data = $request->only(['subject', 'message');
+	    
+		$notifier->notify($data['subject'], $data['message'], 'test')
+	    
+		echo 'Done';
+	}
+
+}
+```
+The message can be a HTML content.
