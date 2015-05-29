@@ -1,0 +1,2 @@
+# Laravel Newsletter
+Mailchimp manager.
