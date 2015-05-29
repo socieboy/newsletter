@@ -1,6 +1,8 @@
 # Laravel Newsletter
 Mailchimp manager.
 
+# Configuration 
+
 Add the service provider to the provider array on the app.php config file
 ```
 Socieboy\Newsletter\NewsletterServiceProvider
@@ -27,4 +29,32 @@ Don't forget to add to your .env file the mailchimp api key.
 
 ```
 MAILCHIMP_APIKEY = 00000000000
+```
+
+
+# Usage
+
+On your controller or whatever place where you need to subscribe an email to a list on mailchimp.
+```
+<?php namespace App\Http\Controllers;
+
+use Socieboy\Newsletter\Subscriber\SubscriberList as Subscriber;
+use App\Http\Requests\Request;
+
+class HomeController extends Controller {
+
+	public function index(Request $request, Subscriber $subscriber)
+	{
+	    $data = $request->only('email');
+	    
+	    /**
+	    * Subscribe to mailchimp "test" list defined on the config file.
+	    */
+	    $subscriber->subscribe('test', $data['email'])
+	    
+		echo 'Done';
+	}
+
+}
+
 ```
