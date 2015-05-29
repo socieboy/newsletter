@@ -17,9 +17,7 @@ To publish on the config folder the newsletter.php file
 ```
 return [
     'lists' => [
-        'test' => '123123123',
-        'other-list' => '123123123',
-        'n' => '123123123'
+        'test' => '123123123'
     ]
 ];
 ```
