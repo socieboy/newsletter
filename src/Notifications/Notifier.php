@@ -21,6 +21,7 @@ class Notifier implements NotifierInterface{
     function __construct(Mailchimp $mailchimp)
     {
         $this->mailchimp = $mailchimp;
+        $this->lists = config('newsletter.lists');
     }
 
     /**

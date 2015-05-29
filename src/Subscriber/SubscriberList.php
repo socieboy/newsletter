@@ -21,6 +21,7 @@ class SubscriberList implements SubscriberInterface{
     function __construct(Mailchimp $mailchimp)
     {
         $this->mailchimp = $mailchimp;
+        $this->lists = config('newsletter.lists');
     }
 
 

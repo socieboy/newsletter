@@ -3,16 +3,11 @@
 return [
 
     /**
-     * Set mailchimp api key.
+     * Define a list name for each list id on your mail chimp account.
      */
-    'key' => env('MAILCHIMP_API_KEY'),
 
-
-    /**
-     * Define a list names for each list id on your mailchimp account.
-     */
     'lists' => [
-        'custom-list' => '123123'
+        'test' => 'a360408084'
     ]
 
 
