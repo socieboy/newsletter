@@ -8,12 +8,11 @@ Add the service provider to the provider array on the app.php config file
 Socieboy\Newsletter\NewsletterServiceProvider
 ```
 
-Execute the command
+Execute the command to publish on the config folder the newsletter.php file
 ```
 php artisan vendor:publish
 ```
 
-To publish on the config folder the newsletter.php file
 ```
 return [
     'lists' => [
@@ -21,7 +20,7 @@ return [
     ]
 ];
 ```
-On the lists key set a name of each list id on mailchimp.
+On the lists key set a name for each list id on mailchimp.
 
 Don't forget to add to your .env file the mailchimp api key.
 
