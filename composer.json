@@ -1,0 +1,15 @@
+{
+    "name": "socieboy/newsletter",
+    "description": "Mailchimp list manager.",
+    "type": "package",
+    "require": {
+        "mailchimp/mailchimp": "2.0.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Francisco Sepulveda",
+            "email": "socieboy@gmail.com"
+        }
+    ]
+}
