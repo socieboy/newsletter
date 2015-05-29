@@ -35,6 +35,7 @@ MAILCHIMP_APIKEY = 00000000000
 # Usage
 
 On your controller or whatever place where you need to subscribe an email to a list on mailchimp.
+Subscribe to mailchimp "test" list defined on the config file.
 ```
 <?php namespace App\Http\Controllers;
 
@@ -45,12 +46,9 @@ class HomeController extends Controller {
 
 	public function index(Request $request, Subscriber $subscriber)
 	{
-	    $data = $request->only('email');
+		$data = $request->only('email');
 	    
-	    /**
-	    * Subscribe to mailchimp "test" list defined on the config file.
-	    */
-	    $subscriber->subscribe('test', $data['email'])
+		$subscriber->subscribe('test', $data['email'])
 	    
 		echo 'Done';
 	}
