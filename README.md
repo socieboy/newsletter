@@ -58,7 +58,7 @@ Subscribe to mailchimp "test" list defined on the config file.
 
 -----------------------
 
-Fire campaings to lists
+Fire campaings
 ```
 <?php namespace App\Http\Controllers;
 
