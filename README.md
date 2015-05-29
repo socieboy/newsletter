@@ -34,6 +34,8 @@ MAILCHIMP_APIKEY = 00000000000
 
 # Usage
 
+% Subscribe an email to lists.
+
 On your controller or whatever place where you need to subscribe an email to a list on mailchimp.
 Subscribe to mailchimp "test" list defined on the config file.
 ```
