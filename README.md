@@ -1,7 +1,7 @@
 # Laravel Newsletter
 Mailchimp manager.
 
-# Configuration 
+## Configuration 
 
 Add the service provider to the provider array on the app.php config file
 ```
@@ -29,9 +29,9 @@ MAILCHIMP_APIKEY = 00000000000
 ```
 
 
-# Usage
+## Usage
 
-Subscribe an email to lists.
+### Subscribe an email to lists.
 
 On your controller or whatever place where you need to subscribe an email to a list on mailchimp.
 ```
@@ -58,7 +58,7 @@ Subscribe to mailchimp "test" list defined on the config file.
 
 -----------------------
 
-Fire campaings
+### Fire campaings
 ```
 <?php namespace App\Http\Controllers;
 
