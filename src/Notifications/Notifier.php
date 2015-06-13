@@ -1,8 +1,11 @@
-<?php namespace Socieboy\Newsletter\Notifications;
+<?php
+
+namespace Socieboy\Newsletter\Notifications;
 
 use Mailchimp;
 
-class Notifier implements NotifierInterface{
+class Notifier implements NotifierInterface
+{
 
     /**
      * Unique ID for list on Mailchimp

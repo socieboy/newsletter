@@ -1,6 +1,9 @@
-<?php namespace Socieboy\Newsletter\Subscriber;
+<?php
 
-interface SubscriberInterface {
+namespace Socieboy\Newsletter\Subscriber;
+
+interface SubscriberInterface
+{
 
     /**
      * @param $list

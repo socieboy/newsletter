@@ -1,8 +1,11 @@
-<?php namespace Socieboy\Newsletter\Subscriber;
+<?php
+
+namespace Socieboy\Newsletter\Subscriber;
 
 use Mailchimp;
 
-class SubscriberList implements SubscriberInterface{
+class SubscriberList implements SubscriberInterface
+{
 
     /**
      * Unique ID for list on Mailchimp

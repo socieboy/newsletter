@@ -1,8 +1,11 @@
-<?php namespace Socieboy\Newsletter;
+<?php
+
+namespace Socieboy\Newsletter;
 
 use Illuminate\Support\ServiceProvider;
 
-class NewsletterServiceProvider extends ServiceProvider {
+class NewsletterServiceProvider extends ServiceProvider
+{
 
 	/**
 	 * Bootstrap the application services.
@@ -11,9 +14,11 @@ class NewsletterServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
+
         $this->publishes([
-            __DIR__.'/config/newsletter.php' => base_path('config/newsletter.php'),
+            __DIR__.'/Config/newsletter.php' => base_path('config/newsletter.php'),
         ]);
+
 	}
 
 	/**
@@ -23,10 +28,12 @@ class NewsletterServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
+
         $this->app->bind(
             'Socieboy\Newsletter\NotifierServiceProvider',
             'Socieboy\Newsletter\SubscriberServiceProvider'
         );
+
 	}
 
 }
