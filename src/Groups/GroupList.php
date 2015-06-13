@@ -89,6 +89,39 @@ class GroupList implements GroupListInterface{
         catch(\Mailchimp_List_InvalidOption $e){
             return false;
         }
+    }
+
+    /**
+     * Return an array of all groups on list that the subscriber is register.
+     *
+     * @param $list
+     * @param $email
+     *
+     * @return array
+     */
+    public function memberGroups($list, $email)
+    {
+        try{
+            $groups = $this->mailChimp->lists->memberInfo(
+                $this->lists[$list],
+                [['email' => $email]]
+            )['data'][0]['merges']['GROUPINGS'][0]['groups'];
+        }catch (\ErrorException $e)
+        {
+            return [];
+        }
+
+        $list = [];
+
+        foreach($groups as $group)
+        {
+            if($group['interested'])
+            {
+                $list[] = $group['name'];
+            }
+        }
+        return $list;
+
 
     }
 
