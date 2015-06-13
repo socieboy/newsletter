@@ -30,8 +30,9 @@ class NewsletterServiceProvider extends ServiceProvider
 	{
 
         $this->app->bind(
-            'Socieboy\Newsletter\NotifierServiceProvider',
-            'Socieboy\Newsletter\SubscriberServiceProvider'
+            'Socieboy\Newsletter\Providers\NotifierServiceProvider',
+            'Socieboy\Newsletter\Providers\SubscriberServiceProvider',
+            'Socieboy\Newsletter\Providers\ListsServiceProvider'
         );
 
 	}

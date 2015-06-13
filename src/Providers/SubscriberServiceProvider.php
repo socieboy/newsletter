@@ -1,4 +1,6 @@
-<?php namespace Socieboy\Newsletter;
+<?php
+
+namespace Socieboy\Newsletter\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
