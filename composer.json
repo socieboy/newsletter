@@ -1,7 +1,13 @@
 {
     "name": "socieboy/newsletter",
-    "description": "Mailchimp list manager.",
+    "description": "MailChimp Subscribers Manager.",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Francisco Sepulveda",
+            "email": "socieboy@gmail.com"
+        }
+    ],
     "require": {
         "mailchimp/mailchimp": "2.0.6"
     },
