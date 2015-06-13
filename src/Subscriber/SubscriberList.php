@@ -8,22 +8,22 @@ class SubscriberList implements SubscriberInterface
 {
 
     /**
-     * Unique ID for list on Mailchimp
+     * Unique ID for list on MailChimp
      * @var array
      */
     protected $lists;
 
     /**
-     * @var Mailchimp
+     * @var $mailChimp
      */
-    protected $mailchimp;
+    protected $mailChimp;
 
     /**
-     * @param $mailchimp
+     * @param $mailChimp
      */
-    function __construct(Mailchimp $mailchimp)
+    function __construct(Mailchimp $mailChimp)
     {
-        $this->mailchimp = $mailchimp;
+        $this->mailChimp = $mailChimp;
         $this->lists = config('newsletter.lists');
     }
 
@@ -33,17 +33,19 @@ class SubscriberList implements SubscriberInterface
      *
      * @param $list
      * @param $email
+     * @param $options
      * @return mixed
      */
-    public function subscribe($listName, $email)
+    public function subscribe($list, $email, $options = null)
     {
-        return $this->mailchimp->lists->subscribe(
-            $this->lists[$listName],
-            ['email' => $email],
-            null,   // merge vars
-            'html', // format email
-            false,  // reuire double
-            true   // update existing customers
+
+        return $this->mailChimp->lists->subscribe(
+            $this->lists[$list],    // List ID
+            ['email' => $email],    // Email to subscribe
+            $options,               // Options
+            'html',                 // Format email
+            false,                  // Require double
+            true                   // Update existing customers
         );
     }
 
@@ -52,14 +54,46 @@ class SubscriberList implements SubscriberInterface
      * @param $email
      * @return mixed
      */
-    public function unsubscribe($listName, $email)
+    public function unsubscribe($list, $email)
     {
-        return $this->mailchimp->lists->unsubscribe(
-            $this->lists[$listName],
-            ['email' => $email],
-            false,   // delete email permanentky
-            false,  // send a goob bye email?
-            false  // send unsubscribe notification email?
+        return $this->mailChimp->lists->unsubscribe(
+            $this->lists[$list],    // List ID
+            ['email' => $email],    // Email Subscribed
+            false,                  // Delete email permanently
+            false,                  // Send a good bye email?
+            false                  // Send un subscribe notification email?
+        );
+    }
+
+
+    /**
+     * Create a new interest group.
+     *
+     * @param $list
+     * @param $name
+     * @return \associative_array
+     */
+    public function group($list, $name)
+    {
+        return $this->mailChimp->lists->interestGroupAdd($this->lists[$list], $name);
+    }
+
+    /**
+     * Create a grouping
+     *
+     * @param $list
+     * @param $name
+     * @param $groups
+     *
+     * @return \associative_array
+     */
+    public function grouping($list, $name, $groups)
+    {
+        return $this->mailChimp->lists->interestGroupingAdd(
+            $this->lists[$list],    // List ID
+            $name,                  // Grouping name
+            'checkboxes',           // Type "checkboxes"
+            $groups
         );
     }
 

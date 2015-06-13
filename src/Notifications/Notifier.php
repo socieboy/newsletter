@@ -8,33 +8,34 @@ class Notifier implements NotifierInterface
 {
 
     /**
-     * Unique ID for list on Mailchimp
+     * Unique ID for list on MailChimp
      * @var array
      */
     protected $lists;
 
     /**
-     * @var Mailchimp
+     * @var $mailChimp
      */
-    protected $mailchimp;
+    protected $mailChimp;
 
     /**
-     * @param $mailchimp
+     * @param $mailChimp
      */
-    function __construct(Mailchimp $mailchimp)
+    function __construct(Mailchimp $mailChimp)
     {
-        $this->mailchimp = $mailchimp;
+        $this->mailChimp = $mailChimp;
         $this->lists = config('newsletter.lists');
     }
 
     /**
-     * @param $title
-     * @param $body
+     * @param      $title
+     * @param      $body
+     * @param      $list
      */
-    public function notify($title, $body, $listName)
+    public function notify($title, $body, $list)
     {
         $options = [
-            'list_id' => $this->lists[$listName],
+            'list_id' => $this->lists[$list],
             'subject' => $title,
             'from_name' => getenv('MAILCHIMP_FROM_NAME'),
             'from_email' => getenv('MAILCHIMP_FROM_EMAIL'),
@@ -46,8 +47,8 @@ class Notifier implements NotifierInterface
             'text' => strip_tags($body)
         ];
 
-        $campaing = $this->mailchimp->campaigns->create('regular', $options, $content);
+        $campaign = $this->mailChimp->campaigns->create('regular', $options, $content);
 
-        $this->mailchimp->campaigns->send($campaing['id']);
+        $this->mailChimp->campaigns->send($campaign['id']);
     }
 }
