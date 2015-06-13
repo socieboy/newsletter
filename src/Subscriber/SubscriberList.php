@@ -75,7 +75,10 @@ class SubscriberList implements SubscriberInterface
      */
     public function group($list, $name)
     {
-        return $this->mailChimp->lists->interestGroupAdd($this->lists[$list], $name);
+        return $this->mailChimp->lists->interestGroupAdd(
+            $this->lists[$list],    // List ID
+            $name                   // Group name
+        );
     }
 
     /**
