@@ -66,38 +66,4 @@ class SubscriberList implements SubscriberInterface
     }
 
 
-    /**
-     * Create a new interest group.
-     *
-     * @param $list
-     * @param $name
-     * @return \associative_array
-     */
-    public function group($list, $name)
-    {
-        return $this->mailChimp->lists->interestGroupAdd(
-            $this->lists[$list],    // List ID
-            $name                   // Group name
-        );
-    }
-
-    /**
-     * Create a grouping
-     *
-     * @param $list
-     * @param $name
-     * @param $groups
-     *
-     * @return \associative_array
-     */
-    public function grouping($list, $name, $groups)
-    {
-        return $this->mailChimp->lists->interestGroupingAdd(
-            $this->lists[$list],    // List ID
-            $name,                  // Grouping name
-            'checkboxes',           // Type "checkboxes"
-            $groups
-        );
-    }
-
 }
