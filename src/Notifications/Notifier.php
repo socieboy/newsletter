@@ -37,9 +37,9 @@ class Notifier implements NotifierInterface
         $options = [
             'list_id' => $this->lists[$list],
             'subject' => $title,
-            'from_name' => getenv('MAILCHIMP_FROM_NAME'),
-            'from_email' => getenv('MAILCHIMP_FROM_EMAIL'),
-            'to_name' => getenv('MAILCHIMP_TO_NAME'),
+            'from_name' => env('MAILCHIMP_FROM_NAME', ''),
+            'from_email' => env('MAILCHIMP_FROM_EMAIL', ''),
+            'to_name' => env('MAILCHIMP_TO_NAME', ''),
         ];
 
         $content = [
@@ -50,5 +50,10 @@ class Notifier implements NotifierInterface
         $campaign = $this->mailChimp->campaigns->create('regular', $options, $content);
 
         $this->mailChimp->campaigns->send($campaign['id']);
+    }
+
+    public function notifyToGroup($title, $body, $list, $group)
+    {
+        $this->mailChimp->campaigns->segmentTest();
     }
 }
